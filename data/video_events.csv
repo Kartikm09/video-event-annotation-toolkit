@@ -1,0 +1,5 @@
+video_id,event_id,start_ms,end_ms,label,confidence,review_status,notes
+VID-001,E01,1200,4200,object_enters_frame,0.94,pass,Clear entry event.
+VID-001,E02,4500,7600,speaker_gesture,0.88,pass,Gesture visible.
+VID-002,E01,3000,2800,scene_change,0.7,needs_fix,End timestamp before start.
+VID-003,E01,1000,5000,policy_sensitive_context,0.81,review,Synthetic moderation label; needs second pass.

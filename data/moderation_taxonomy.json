@@ -1,0 +1,9 @@
+{
+  "labels": [
+    "safe_general",
+    "policy_sensitive_context",
+    "needs_human_review",
+    "unclear_visual_evidence"
+  ],
+  "escalation_rule": "review_status is review or confidence < 0.75"
+}
