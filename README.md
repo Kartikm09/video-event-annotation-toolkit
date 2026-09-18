@@ -81,3 +81,23 @@ Built a video event annotation toolkit with synthetic timestamp labels, moderati
 - No private client names.
 - No harmful jailbreak instructions.
 - No deletion or modification of existing repositories.
+
+## Verification
+
+Run `make verify` (or `python3 -m unittest discover -s tests -v`). The
+standard-library suite uses independent synthetic fixtures and command-line
+checks, including malformed inputs. GitHub CI runs the same command on Python
+3.11. These checks verify the timestamp-reporting code.
+
+`python3 scripts/check_timestamps.py [path/to/events.csv]` reports both invalid
+ranges and overlapping pairs. Overlap means positive-duration intersection
+within the same video; touching endpoints and different videos do not overlap.
+Only valid ranges participate in overlap checks. Concurrent events can be
+intentional, so overlaps are review findings, not automatic labeling errors.
+
+Default report mode keeps exit status 0 when findings are present. Add
+`--strict` to exit 1 if any invalid range or overlap needs review. Malformed
+timestamp data exits 2. This metadata check does not inspect video pixels,
+validate a label taxonomy, or verify bounds against a media duration.
+
+See [repair scope and evidence](docs/verified-repair.md).
